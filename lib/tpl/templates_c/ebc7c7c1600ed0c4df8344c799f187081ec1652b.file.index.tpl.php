@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-11-22 01:08:15
-         compiled from "modules\CRUD\tpl\index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:142543cfab4354b34-13015969%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.1, created on 2014-11-22 01:08:22
+         compiled from "modules\gestionprogramme\tpl\index.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:8830546fd3f6df2d57-15956578%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '39d6fb2a291e2766ed2291e72a889a06f3cbba6e' => 
+    'ebc7c7c1600ed0c4df8344c799f187081ec1652b' => 
     array (
-      0 => 'modules\\CRUD\\tpl\\index.tpl',
+      0 => 'modules\\gestionprogramme\\tpl\\index.tpl',
       1 => 1416614549,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '142543cfab4354b34-13015969',
+  'nocache_hash' => '8830546fd3f6df2d57-15956578',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_543cfab4709f9',
   'variables' => 
   array (
     'data' => 0,
     'donnees' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_546fd3f715c37',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_543cfab4709f9')) {function content_543cfab4709f9($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_546fd3f715c37')) {function content_546fd3f715c37($_smarty_tpl) {?>
 <script>
 //demande confirmation sur click d'un bouton supprimer
 $(function() {
@@ -59,7 +59,7 @@ $(function() {
 <h3>Liste</h3>
 	<table class='table table-striped'>
 		<thead>
-			<th>id</th><th>Reference</th><th>Prix</th><th>Actions</th>
+			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Actions</th>
 		</thead>
 		<tbody>
 		<?php  $_smarty_tpl->tpl_vars['donnees'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['donnees']->_loop = false;
@@ -70,11 +70,11 @@ $_smarty_tpl->tpl_vars['donnees']->_loop = true;
  $_smarty_tpl->tpl_vars['ligne']->value = $_smarty_tpl->tpl_vars['donnees']->key;
 ?>
 			<tr class='table-striped'>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
+				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Reference'];?>
+				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Duree'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Prix'];?>
+				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Moyenne'];?>
 </td>
 				<td>
 					<!--voir le détail-->

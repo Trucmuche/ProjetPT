@@ -28,7 +28,7 @@ $(function() {
 
 <h2>liste des produits et actions</h2>
 	<p class="text-right">
-		<a href='?module=CRUD&action=ajouter' class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
+		<a href='?module=GestionProgramme&action=ajouter&displayModuleInDialog=1' class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
 	</p>
 <h3>Liste</h3>
 	<table class='table table-striped'>
@@ -46,7 +46,7 @@ $(function() {
 					<a class='glyphicon glyphicon-search' 
 						data-toggle="modal" 
 						data-target="#inclusionModal" 
-						href='?module=CRUD&action=detail&id={$donnees.id}&ref={$donnees.Reference}&displayModuleInDialog=1'>
+						href='?module=GestionProgramme&action=detail&id={$donnees.id}&ref={$donnees.Reference}&displayModuleInDialog=1'>
 					</a> 				
 
 					<!--modifier-->

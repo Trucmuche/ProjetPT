@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-11-19 09:07:20
+<?php /* Smarty version Smarty-3.1.1, created on 2014-11-22 01:30:06
          compiled from "modules\GestionProgramme\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:26579546c4f6f4c96b6-12479896%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '799be27249d85dfa2b9d639151fdd04923b263cf' => 
     array (
       0 => 'modules\\GestionProgramme\\tpl\\index.tpl',
-      1 => 1416384436,
+      1 => 1416615919,
       2 => 'file',
     ),
   ),
@@ -54,7 +54,7 @@ $(function() {
 
 <h2>liste des produits et actions</h2>
 	<p class="text-right">
-		<a href='?module=CRUD&action=ajouter' class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
+		<a href='?module=GestionProgramme&action=ajouter&displayModuleInDialog=1' class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
 	</p>
 <h3>Liste</h3>
 	<table class='table table-striped'>
@@ -81,7 +81,7 @@ $_smarty_tpl->tpl_vars['donnees']->_loop = true;
 					<a class='glyphicon glyphicon-search' 
 						data-toggle="modal" 
 						data-target="#inclusionModal" 
-						href='?module=CRUD&action=detail&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
+						href='?module=GestionProgramme&action=detail&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
 &ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Reference'];?>
 &displayModuleInDialog=1'>
 					</a> 				

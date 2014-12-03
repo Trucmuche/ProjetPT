@@ -15,7 +15,7 @@ class ChaineManager{
 		public static function chercherParID($id){
 			$sql="SELECT * from Chaine WHERE id=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($id));
+			$res->execute($id);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -25,23 +25,23 @@ class ChaineManager{
 			$Chaine->Id_Chaine=$p[0];
 			$Chaine->Nom_Chaine=$p[1];
 			$Chaine->Img_Chaine=$p[2];
-			return Chaine;
+			return $Chaine;
 			}
 		
-			public static function chercherParNom_Chaine($Pseudo){
+			public static function chercherParNom_Chaine($nomchaine){
 			$sql="SELECT * from Chaine WHERE Nom_Chaine=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($Pseudo));
+			$res->execute($nomchaine);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
 			}
 			$p= $res->fetch();			
-			$Chaine=new Internaute();
+			$Chaine=new Chaine();
 			$Chaine->Id_Chaine=$p[0];
 			$Chaine->Nom_Chaine=$p[1];
 			$Chaine->Img_Chaine=$p[2];							
-			return Chaine;
+			return $Chaine;
 	}
 	
 			//autres exemples de fonctions possibles
@@ -54,5 +54,9 @@ class ChaineManager{
 				return false;
 			}
 			$p= $res->fetchAll();
-			return p;
+			return $p;
+			}
+			
+	}
+?>
 		

@@ -16,7 +16,7 @@ class JugerManager{
 		public static function chercherParInternaute($id){
 			$sql="SELECT * from Juger WHERE id=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($id));
+			$res->execute($id);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -35,7 +35,7 @@ class JugerManager{
 		public static function chercherParProg($nom){
 			$sql="SELECT * from Juger WHERE Nom_Programme=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($nom));
+			$res->execute($nom);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;

@@ -6,7 +6,7 @@ class GenreManager{
 			
 			$sql = "INSERT INTO Genre VALUES ('', ?)";
 			$res = DB::get_instance()->prepare($sql);
-			$res -> execute(array($p->Nom_Genre));
+			$res -> execute($p->Nom_Genre);
 			$p->id=DB::get_instance()->lastInsertId();
 			return $p;
 			
@@ -16,7 +16,7 @@ class GenreManager{
 		public static function chercherParID($id){
 			$sql="SELECT * from Genre WHERE id=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($id));
+			$res->execute($id);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -57,7 +57,7 @@ class GenreManager{
 				return false;
 			}
 			$p= $res->fetchAll();
-			return p;
+			return $p;
 			
 		}   		
 

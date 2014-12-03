@@ -9,4 +9,7 @@ class Type{
 			$this->Id_Type = $Id_Type;			
 			$this->Nom_Type=$Nom_Type;
 
+	}
+
 }
+?>

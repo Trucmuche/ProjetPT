@@ -33,7 +33,7 @@ class MembreManager{
 		public static function chercherParID($id){
 			$sql="SELECT * from Membre WHERE id=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($id));
+			$res->execute($id);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;

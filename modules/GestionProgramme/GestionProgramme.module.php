@@ -79,7 +79,8 @@ class GestionProgramme extends Module{
 	$this->set_title("Ajout d'un programme");		
 
 
-		
+		$data = GenreManager::liste();
+		$data2 = TypeManager::liste();
 		//construction d'un formulaire manuellement
 		//chaque champ est ajouté par appel de fonction
 		$f=new Form("?module=GestionProgramme&action=valide","form1");
@@ -88,10 +89,10 @@ class GestionProgramme extends Module{
 			$f->add_text("Image du programme","Image du programme","Image du programme")->set_required();		
 			$f->add_textarea("Description","Description","Description")->set_required();		
 			$f->add_radiogroup("Pegi","Pegi","Pegi",array("0"=>"tp","10"=>"10","12"=>"12","16"=>"16","18"=>"18"))->set_value("tp")->set_required();
-			$f->add_select("Saison","Saison","Saison",array("1"=>"1","2"=>"2","3"=>"3"))->set_value("1");
-			$f->add_select("Episode","Episode","Episode",array("1"=>"1","2"=>"2","3"=>"3","4"=>"4","5"=>"5","6"=>"6","7"=>"7","8"=>"8","9"=>"9","10"=>"10","11"=>"11","12"=>"12","13"=>"13","14"=>"14","15"=>"15","16"=>"16","17"=>"17","18"=>"18","19"=>"19","20"=>"20","21"=>"21","22"=>"22","23"=>"23","24"=>"24"))->set_value("1");
-					
-	
+			$f->add_select("Saison","Saison","Saison",array("1"=>"1","2"=>"2","3"=>"3"));
+			$f->add_select("Episode","Episode","Episode",array("NULL"=>"Aucun","1"=>"1","2"=>"2","3"=>"3","4"=>"4","5"=>"5","6"=>"6","7"=>"7","8"=>"8","9"=>"9","10"=>"10","11"=>"11","12"=>"12","13"=>"13","14"=>"14","15"=>"15","16"=>"16","17"=>"17","18"=>"18","19"=>"19","20"=>"20","21"=>"21","22"=>"22","23"=>"23","24"=>"24"));
+			$f->add_select("Genre","Genre","Genre",$data)->set_value("Action")->set_required();	
+			$f->add_select("Type","Type","Type",$data2)->set_value("Film")->set_required();	
 
 		// $f->login->set_validation("max-length:20");
 		// $f->Nom->set_validation("max-length:50");
@@ -141,11 +142,24 @@ class GestionProgramme extends Module{
 		//recupère l'id et la référence 
 		$id = $this->req->id;
 		$ref= $this->req->ref;
+		$idgenre = $this->req->Id_Genre;
+		$idtype = $this->req->Id_Type;
+		
+		$detail = new Programme();
+		$genre = new Genre();
+		$type = new Type();
+		
+		$detail = ProgrammeManager::chercherParId($id);
+		$genre = GenreManager::chercherParId($idgenre);
+		$type = TypeManager::chercherParId($idtype);
 		
 		//passe ces informations dans le template
 		
 		$this->tpl->assign("id",$id);
 		$this->tpl->assign("reference",$ref);		
+		$this->tpl->assign("detail",$detail);		
+		$this->tpl->assign("genre",$genre);		
+		$this->tpl->assign("type",$type);		
 		
 		
 	}

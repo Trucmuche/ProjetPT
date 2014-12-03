@@ -12,3 +12,7 @@ class Chaine{
 			$this->Img_Chaine= $Img_Chaine;
 
 }
+
+}
+
+?>

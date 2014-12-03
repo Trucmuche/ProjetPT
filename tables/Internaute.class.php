@@ -16,3 +16,7 @@ class Internaute{
 			$this->Mdp=$Mdp;
 			$this->Mail=$Mail;
 }
+
+}
+
+?>

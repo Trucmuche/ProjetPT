@@ -15,7 +15,7 @@ class InternauteManager{
 		public static function chercherParID($id){
 			$sql="SELECT * from Internaute WHERE id=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($id));
+			$res->execute($id);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -34,7 +34,7 @@ class InternauteManager{
 			public static function chercherParPseudo($Pseudo){
 			$sql="SELECT * from Internaute WHERE Pseudo=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($Pseudo));
+			$res->execute($Pseudo);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -61,5 +61,8 @@ class InternauteManager{
 				return false;
 			}
 			$p= $res->fetchAll();
-			return p;
+			return $p;
+			}
+	}
+?>
 		

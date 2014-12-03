@@ -9,13 +9,13 @@ class TypeManager{
 			$res -> execute(array($p->Nom_Type));
 			$p->id=DB::get_instance()->lastInsertId();
 			return $p;
-			}
+		}
 
 			
 		public static function chercherParID($id){
 			$sql="SELECT * from Type WHERE id=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($id));
+			$res->execute($id);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -27,10 +27,10 @@ class TypeManager{
 			return $type;
 		}
 		
-			public static function chercherParNom($nom){
+		public static function chercherParNom($nom){
 			$sql="SELECT * from Type WHERE nom=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($nom));
+			$res->execute($nom);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -41,10 +41,10 @@ class TypeManager{
 			$type->Nom_Type=$p[1];											
 			return $type;									
 		
-	}
+		}		
 	
 			//autres exemples de fonctions possibles
-			public static function liste(){
+		public static function liste(){
 			$sql="SELECT * from Type";
 			$res=DB::get_instance()->prepare($sql);
 			$res->execute();
@@ -53,4 +53,9 @@ class TypeManager{
 				return false;
 			}
 			$p= $res->fetchAll();
-			return p;
+			return $p;
+			
+		}
+	}
+		
+?>

@@ -72,7 +72,7 @@ class ProgrammeManager{
 				return false;
 			}
 			$p= $res->fetchAll();
-			return p;
+			return $p;
 			/*$programme=new Programme();
 			$programme->Id_Programme=$p[0];
 			$programme->Nom_Programme=$p[1];

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-11-19 09:07:20
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 09:51:01
          compiled from "modules\GestionProgramme\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:26579546c4f6f4c96b6-12479896%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '799be27249d85dfa2b9d639151fdd04923b263cf' => 
     array (
       0 => 'modules\\GestionProgramme\\tpl\\index.tpl',
-      1 => 1416384436,
+      1 => 1417596633,
       2 => 'file',
     ),
   ),
@@ -52,14 +52,17 @@ $(function() {
 </script>
 
 
-<h2>liste des produits et actions</h2>
+<h2>Liste des programmes</h2>
 	<p class="text-right">
-		<a href='?module=CRUD&action=ajouter' class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
+		<a href='?module=GestionProgramme&action=ajouter&displayModuleInDialog=1' 
+		data-toggle="modal" 
+		data-target="#inclusionModal"
+		class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
 	</p>
 <h3>Liste</h3>
 	<table class='table table-striped'>
 		<thead>
-			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Actions</th>
+			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Description</th><th>Actions</th>
 		</thead>
 		<tbody>
 		<?php  $_smarty_tpl->tpl_vars['donnees'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['donnees']->_loop = false;
@@ -76,13 +79,15 @@ $_smarty_tpl->tpl_vars['donnees']->_loop = true;
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Moyenne'];?>
 </td>
+				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Description'];?>
+</td>
 				<td>
 					<!--voir le détail-->
 					<a class='glyphicon glyphicon-search' 
 						data-toggle="modal" 
 						data-target="#inclusionModal" 
-						href='?module=CRUD&action=detail&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
-&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Reference'];?>
+						href='?module=GestionProgramme&action=detail&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
+&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 &displayModuleInDialog=1'>
 					</a> 				
 
@@ -90,16 +95,16 @@ $_smarty_tpl->tpl_vars['donnees']->_loop = true;
 					<a class='glyphicon glyphicon-pencil' 
 						data-toggle="modal" 
 						data-target="#inclusionModal"
-						href='?module=CRUD&action=modifier&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
-&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Reference'];?>
+						href='?module=GestionProgramme&action=modifier&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
+&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 &displayModuleInDialog=1'>
 					</a>
 
 					<!--supprimer-->
-					<a class='glyphicon glyphicon-remove' title='<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Reference'];?>
+					<a class='glyphicon glyphicon-remove' title='<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Porgramme'];?>
 ' 
-						href='?module=CRUD&action=supprimer&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
-&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Reference'];?>
+						href='?module=GestionProgramme&action=supprimer&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
+&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 '></a>				
 				</td>
 			</tr>
@@ -142,7 +147,7 @@ if (!$_smarty_tpl->tpl_vars['donnees']->_loop) {
 <div class="modal fade" id="inclusionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-	    Contenu vide remplacé par le module...
+	    Veuillez patientez...
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><?php }} ?>

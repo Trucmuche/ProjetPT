@@ -26,14 +26,17 @@ $(function() {
 </script>
 {/literal}
 
-<h2>liste des produits et actions</h2>
+<h2>Liste des programmes</h2>
 	<p class="text-right">
-		<a href='?module=CRUD&action=ajouter' class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
+		<a href='?module=GestionProgramme&action=ajouter&displayModuleInDialog=1' 
+		data-toggle="modal" 
+		data-target="#inclusionModal"
+		class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
 	</p>
 <h3>Liste</h3>
 	<table class='table table-striped'>
 		<thead>
-			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Actions</th>
+			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Description</th><th>Actions</th>
 		</thead>
 		<tbody>
 		{foreach $data as $ligne=>$donnees}
@@ -41,24 +44,25 @@ $(function() {
 				<td>{$donnees.Nom_Programme}</td>
 				<td>{$donnees.Duree}</td>
 				<td>{$donnees.Moyenne}</td>
+				<td>{$donnees.Description}</td>
 				<td>
 					<!--voir le détail-->
 					<a class='glyphicon glyphicon-search' 
 						data-toggle="modal" 
 						data-target="#inclusionModal" 
-						href='?module=CRUD&action=detail&id={$donnees.id}&ref={$donnees.Reference}&displayModuleInDialog=1'>
+						href='?module=GestionProgramme&action=detail&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
 					</a> 				
 
 					<!--modifier-->
 					<a class='glyphicon glyphicon-pencil' 
 						data-toggle="modal" 
 						data-target="#inclusionModal"
-						href='?module=CRUD&action=modifier&id={$donnees.id}&ref={$donnees.Reference}&displayModuleInDialog=1'>
+						href='?module=GestionProgramme&action=modifier&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
 					</a>
 
 					<!--supprimer-->
-					<a class='glyphicon glyphicon-remove' title='{$donnees.Reference}' 
-						href='?module=CRUD&action=supprimer&id={$donnees.id}&ref={$donnees.Reference}'></a>				
+					<a class='glyphicon glyphicon-remove' title='{$donnees.Nom_Porgramme}' 
+						href='?module=GestionProgramme&action=supprimer&id={$donnees.id}&ref={$donnees.Nom_Programme}'></a>				
 				</td>
 			</tr>
 		{foreachelse}	
@@ -98,7 +102,7 @@ $(function() {
 <div class="modal fade" id="inclusionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-	    Contenu vide remplacé par le module...
+	    Veuillez patientez...
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>

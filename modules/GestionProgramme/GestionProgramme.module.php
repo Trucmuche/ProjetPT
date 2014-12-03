@@ -53,23 +53,26 @@ class GestionProgramme extends Module{
 		//construction d'un formulaire manuellement
 		//chaque champ est ajouté par appel de fonction
 		$f=new Form("?module=Formulaire&action=valide","form1");
-			$f->add_text("Nom_du_programme","Nom_du_programme","Nom du programme")->set_required();		
-			$f->add_text("Image_du_programme","Image_du_programme","Image du programme");		
-			$f->add_textarea("Description","Description","Description")->set_required();		
-			$f->add_text("Pegi","Pegi","Pegi")->set_required();	
-			$f->add_text("Inedit","Inedit","Inedit")->set_required();		
-			$f->add_text("Saison","Saison","Saison")->set_required();		
-			$f->add_text("Episode","Episode","Episode")->set_required();		
-			$f->add_text("Duree","Duree","Durée")->set_required();		
-			$f->add_text("Moyenne","Moyenne","Moyenne")->set_required();		
-			$f->add_text("Id_Genre","Id_Genre","Id_Genre")->set_required();		
-			$f->add_text("Id_Type","Id_type","Id_Type")->set_required();				
+			$f->add_text("Nom du programme","Nom du programme","Nom du programme")->set_required();		
+			$f->add_text("Image du programme","Image du programme","Image du programme")->set_required();;		
+			$f->add_textarea("Description","Description","Description")->set_required();;		
+			$f->add_text("Pegi","Pegi","Pegi")->set_required();;		
+			$f->add_password("pass1","pass1","Password")->set_required();;		
+			$f->add_password("pass2","pass2","retapez le password")->set_required();;		
+	
+
+		$f->login->set_validation("max-length:20");
+		$f->Nom->set_validation("max-length:50");
+		$f->Prenom->set_validation("max-length:20");
+		$f->pass1->set_validation("required");
+		$f->pass2->set_validation("equals-field:pass1");		
+		$f->mail->set_validation("mail");		
 
 
 		$f->add_submit("Valider","bntval")->set_value('Valider');		
 
 		//exemple de pré-remplissage du formulaire avec des valeurs par défaut
-		$f->populate(array("Nom_du_programme"=>"Chasseur de fantômes", "Moyenne"=>"10"));
+		$f->populate(array("login"=>"Toto", "nom"=>"Patate"));
 
 
 		//passe le formulaire dans le template sous le nom "form"

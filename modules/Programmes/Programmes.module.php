@@ -1,5 +1,5 @@
 <?php
-class GestionProgramme extends Module{
+class Programmes extends Module{
 
 	public function action_index(){
 
@@ -17,11 +17,11 @@ class GestionProgramme extends Module{
 	public function action_modifier(){
 		$this->set_title("Modifier");
 		
-		$f=new Form("?module=GestionProgramme&action=modification","form1");
+		$f=new Form("?module=Programmes&action=modification","form1");
 			$f->add_text("Nom du programme","Nom du programme","Nom du programme")->set_required();		
 			$f->add_text("Image du programme","Image du programme","Image du programme")->set_required();		
 			$f->add_textarea("Description","Description","Description")->set_required();		
-			$f->add_radiogroup("Pegi","Pegi","Pegi",array("tp"=>"0","10"=>"10","12"=>"12","16"=>"16","18"=>"18"))->set_value("A")->set_required();
+			$f->add_radiogroup("Pegi","Pegi","Pegi",array("Tout Public"=>"0","10"=>"10","12"=>"12","16"=>"16","18"=>"18"))->set_value("A")->set_required();
 			$f->add_password("pass1","pass1","Password")->set_required();
 			$f->add_password("pass2","pass2","retapez le password")->set_required();		
 	
@@ -81,18 +81,34 @@ class GestionProgramme extends Module{
 
 		$data = GenreManager::liste();
 		$data2 = TypeManager::liste();
+		
+		$data_select = array();
+		foreach ($data as $ligne=>$donnees)
+		{
+			$data_select[$donnees['Id_Genre']] = $donnees['Nom_Genre'];
+		}
+		
+		$data2_select = array();
+		foreach ($data as $ligne=>$donnees)
+		{
+			$data2_select[$donnees['Id_Type']] = $donnees['Nom_Type'];
+		}
+		
+		var_dump($data2);
+		exit;
+		
 		//construction d'un formulaire manuellement
 		//chaque champ est ajouté par appel de fonction
-		$f=new Form("?module=GestionProgramme&action=valide","form1");
+		$f=new Form("?module=Programmes&action=valide","form1");
 			$f->add_text("Nom du programme","Nom du programme","Nom du programme")->set_required();
 			$f->add_file("ImageProgramme","ImageProgramme","Image du programme");	
 			$f->add_text("Image du programme","Image du programme","Image du programme")->set_required();		
 			$f->add_textarea("Description","Description","Description")->set_required();		
-			$f->add_radiogroup("Pegi","Pegi","Pegi",array("0"=>"tp","10"=>"10","12"=>"12","16"=>"16","18"=>"18"))->set_value("tp")->set_required();
-			$f->add_select("Saison","Saison","Saison",array("1"=>"1","2"=>"2","3"=>"3"));
+			$f->add_radiogroup("Pegi","Pegi","Pegi",array("0"=>"Tout public","10"=>"10","12"=>"12","16"=>"16","18"=>"18"))->set_value("tp")->set_required();
+			$f->add_select("Saison","Saison","Saison",array("NULL"=>"Aucune","1"=>"1","2"=>"2","3"=>"3"));
 			$f->add_select("Episode","Episode","Episode",array("NULL"=>"Aucun","1"=>"1","2"=>"2","3"=>"3","4"=>"4","5"=>"5","6"=>"6","7"=>"7","8"=>"8","9"=>"9","10"=>"10","11"=>"11","12"=>"12","13"=>"13","14"=>"14","15"=>"15","16"=>"16","17"=>"17","18"=>"18","19"=>"19","20"=>"20","21"=>"21","22"=>"22","23"=>"23","24"=>"24"));
-			$f->add_select("Genre","Genre","Genre",$data)->set_value("Action")->set_required();	
-			$f->add_select("Type","Type","Type",$data2)->set_value("Film")->set_required();	
+			$f->add_select("Genre","Genre","Genre",$data_select)->set_value("Action")->set_required();	
+			$f->add_select("Type","Type","Type",$data2_select)->set_value("Film")->set_required();	
 
 		// $f->login->set_validation("max-length:20");
 		// $f->Nom->set_validation("max-length:50");

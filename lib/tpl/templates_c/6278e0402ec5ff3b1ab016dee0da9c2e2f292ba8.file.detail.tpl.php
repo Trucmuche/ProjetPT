@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 13:22:08
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 13:31:22
          compiled from "modules\GestionProgramme\tpl\detail.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32618547ebf3a813d78-73278228%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6278e0402ec5ff3b1ab016dee0da9c2e2f292ba8' => 
     array (
       0 => 'modules\\GestionProgramme\\tpl\\detail.tpl',
-      1 => 1417609319,
+      1 => 1417609334,
       2 => 'file',
     ),
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'reference' => 0,
     'detail' => 0,
+    'donnees' => 0,
     'genre' => 0,
     'type' => 0,
-    'donnees' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -40,7 +40,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['donnees']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['donnees']->_loop = true;
  $_smarty_tpl->tpl_vars['ligne']->value = $_smarty_tpl->tpl_vars['donnees']->key;
 ?>
-	<?php echo $_smarty_tpl->tpl_vars['reference']->value;?>
+	<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 
 	<?php } ?>
 		bonjour

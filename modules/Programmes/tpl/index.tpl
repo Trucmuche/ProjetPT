@@ -28,7 +28,7 @@ $(function() {
 
 <h2>Liste des programmes</h2>
 	<p class="text-right">
-		<a href='?module=GestionProgramme&action=ajouter&displayModuleInDialog=1' 
+		<a href='?module=Programmes&action=ajouter&displayModuleInDialog=1' 
 		data-toggle="modal" 
 		data-target="#inclusionModal"
 		class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
@@ -50,19 +50,23 @@ $(function() {
 					<a class='glyphicon glyphicon-search' 
 						data-toggle="modal" 
 						data-target="#inclusionModal" 
-						href='?module=GestionProgramme&action=detail&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
+						href='?module=Programmes&action=detail&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
 					</a> 				
 
 					<!--modifier-->
 					<a class='glyphicon glyphicon-pencil' 
 						data-toggle="modal" 
 						data-target="#inclusionModal"
-						href='?module=GestionProgramme&action=modifier&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
+						href='?module=Programmes&action=modifier&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
 					</a>
 
 					<!--supprimer-->
 					<a class='glyphicon glyphicon-remove' title='{$donnees.Nom_Porgramme}' 
-						href='?module=GestionProgramme&action=supprimer&id={$donnees.id}&ref={$donnees.Nom_Programme}'></a>				
+						href='?module=Programmes&action=supprimer&id={$donnees.id}&ref={$donnees.Nom_Programme}'></a>
+					
+					<!--avis-->
+					<a class='glyphicon glyphicon-heart-empty' title='{$donnees.Nom_Porgramme}' 
+						href='?module=afficheavis&action=afficher&id={$donnees.id}&ref={$donnees.Nom_Programme}'></a>
 				</td>
 			</tr>
 		{foreachelse}	

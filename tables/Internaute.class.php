@@ -7,14 +7,16 @@ class Internaute{
 	public $Pseudo;
 	public $Mdp;
 	public $Mail;
+	public $admin
 	
-	public function __construct($Id_Internaute=NULL, $Nom_Internaute=NULL, $Prenom_Internaute=NULL, $Pseudo=NULL, $Mdp=NULL, $Mail=NULL){
+	public function __construct($Id_Internaute=NULL, $Nom_Internaute=NULL, $Prenom_Internaute=NULL, $Pseudo=NULL, $Mdp=NULL, $Mail=NULL, $admin=NULL){
 			$this->Id_Internaute = $Id_Internaute;			
 			$this->Nom_Internaute=$Nom_Internaute;
 			$this->Prenom_Internaute= $Prenom_Internaute;
 			$this->Pseudo=$Pseudo;
 			$this->Mdp=$Mdp;
 			$this->Mail=$Mail;
+			$this->admin=$admin;
 }
 
 }

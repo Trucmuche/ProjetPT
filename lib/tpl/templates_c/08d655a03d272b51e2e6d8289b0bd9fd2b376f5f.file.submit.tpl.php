@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-10-14 12:27:46
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 18:38:59
          compiled from "templates\champs\submit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:14473543cfaa2e3db64-28805534%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '08d655a03d272b51e2e6d8289b0bd9fd2b376f5f' => 
     array (
       0 => 'templates\\champs\\submit.tpl',
-      1 => 1413158696,
+      1 => 1417628191,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_543cfaa2f281a',
   'variables' => 
   array (
     'f_error' => 0,
@@ -25,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f_value' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_543cfaa2f281a',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_543cfaa2f281a')) {function content_543cfaa2f281a($_smarty_tpl) {?><div class='form-group <?php echo $_smarty_tpl->tpl_vars['f_error']->value;?>
 '>

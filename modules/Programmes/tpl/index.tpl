@@ -50,23 +50,23 @@ $(function() {
 					<a class='glyphicon glyphicon-search' 
 						data-toggle="modal" 
 						data-target="#inclusionModal" 
-						href='?module=Programmes&action=detail&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
+						href='?module=Programmes&action=detail&id={$donnees.Id_Programme}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
 					</a> 				
 
 					<!--modifier-->
 					<a class='glyphicon glyphicon-pencil' 
 						data-toggle="modal" 
 						data-target="#inclusionModal"
-						href='?module=Programmes&action=modifier&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
+						href='?module=Programmes&action=modifier&id={$donnees.Id_Programme}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
 					</a>
 
 					<!--supprimer-->
-					<a class='glyphicon glyphicon-remove' title='{$donnees.Nom_Porgramme}' 
+					<a class='glyphicon glyphicon-remove' title='{$donnees.Nom_Programme}' 
 						href='?module=Programmes&action=supprimer&id={$donnees.Id_Programme}&ref={$donnees.Nom_Programme}'></a>
 					
 					<!--avis-->
-					<a class='glyphicon glyphicon-heart-empty' title='{$donnees.Nom_Porgramme}' 
-						href='?module=afficheavis&action=afficher&id={$donnees.id}&ref={$donnees.Nom_Programme}'></a>
+					<a class='glyphicon glyphicon-heart-empty' title='{$donnees.Nom_Programme}' 
+						href='?module=afficheavis&action=afficher&id={$donnees.Id_Programme}&ref={$donnees.Nom_Programme}'></a>
 				</td>
 			</tr>
 		{foreachelse}	

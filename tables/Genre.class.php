@@ -7,7 +7,7 @@ class Genre{
 		
 		
 		public function __construct($Id_Genre=NULL, $Nom_Genre=NULL){
-			$this->Id_Programme = $Id_Programme;			
+			$this->Id_Genre = $Id_Genre;			
 			$this->Nom_Genre=$Nom_Genre;						
 		}
 		

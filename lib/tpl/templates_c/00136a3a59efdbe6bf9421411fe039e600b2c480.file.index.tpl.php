@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 16:43:06
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 17:14:40
          compiled from "modules\Programmes\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9996547f2cb85627c2-18767493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '00136a3a59efdbe6bf9421411fe039e600b2c480' => 
     array (
       0 => 'modules\\Programmes\\tpl\\index.tpl',
-      1 => 1417621358,
+      1 => 1417623252,
       2 => 'file',
     ),
   ),
@@ -103,7 +103,7 @@ $_smarty_tpl->tpl_vars['donnees']->_loop = true;
 					<!--supprimer-->
 					<a class='glyphicon glyphicon-remove' title='<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Porgramme'];?>
 ' 
-						href='?module=Programmes&action=supprimer&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
+						href='?module=Programmes&action=supprimer&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
 &ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 '></a>
 					

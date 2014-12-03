@@ -6,14 +6,14 @@ class TypeManager{
 			
 			$sql = "INSERT INTO Type VALUES ('',?)";
 			$res = DB::get_instance()->prepare($sql);
-			$res -> execute(array($p->Nom_Type));
+			$res -> execute($p->Nom_Type);
 			$p->id=DB::get_instance()->lastInsertId();
 			return $p;
 		}
 
 			
 		public static function chercherParID($id){
-			$sql="SELECT * from Type WHERE id=?";
+			$sql="SELECT * from Type WHERE Id_Type=?";
 			$res=DB::get_instance()->prepare($sql);
 			$res->execute($id);
 			//gérer les erreurs éventuelles
@@ -28,7 +28,7 @@ class TypeManager{
 		}
 		
 		public static function chercherParNom($nom){
-			$sql="SELECT * from Type WHERE nom=?";
+			$sql="SELECT * from Type WHERE Nom_Type=?";
 			$res=DB::get_instance()->prepare($sql);
 			$res->execute($nom);
 			//gérer les erreurs éventuelles

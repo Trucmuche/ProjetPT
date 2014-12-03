@@ -14,7 +14,7 @@ class GenreManager{
 
 
 		public static function chercherParID($id){
-			$sql="SELECT * from Genre WHERE id=?";
+			$sql="SELECT * from Genre WHERE Id_Genre=?";
 			$res=DB::get_instance()->prepare($sql);
 			$res->execute($id);
 			//gérer les erreurs éventuelles
@@ -31,9 +31,9 @@ class GenreManager{
 
 
 		public static function chercherParNom($nom){
-			$sql="SELECT * from Genre WHERE Id_Programme=?";
+			$sql="SELECT * from Genre WHERE Nom_Genre=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute(array($nom));
+			$res->execute($nom);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;

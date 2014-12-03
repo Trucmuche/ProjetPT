@@ -65,10 +65,15 @@ class Programmes extends Module{
 		$id = $this->req->id;
 		$ref= $this->req->ref;
 		
+		
+		ProgrammeManager::supprimerParId($id);
+		
 		//passe ces informations dans le template
 		
-		$this->tpl->assign("id",$id);
-		$this->tpl->assign("reference",$ref);		
+		//test pour affichage
+		//throw new Exception("Exception");
+		$this->site->ajouter_message("Suppression effectué");
+		$this->site->redirect('Programmes');
 		
 	}
 	
@@ -94,15 +99,11 @@ class Programmes extends Module{
 			$data2_select[$donnees['Id_Type']] = $donnees['Nom_Type'];
 		}
 		
-		var_dump($data2);
-		exit;
-		
 		//construction d'un formulaire manuellement
 		//chaque champ est ajouté par appel de fonction
 		$f=new Form("?module=Programmes&action=valide","form1");
-			$f->add_text("Nom du programme","Nom du programme","Nom du programme")->set_required();
-			$f->add_file("ImageProgramme","ImageProgramme","Image du programme");	
-			$f->add_text("Image du programme","Image du programme","Image du programme")->set_required();		
+			$f->add_text("Nom du programme","NomDuProgramme","Nom du programme")->set_required();
+			$f->add_file("ImageProgramme","ImageProgramme","Image du programme");			
 			$f->add_textarea("Description","Description","Description")->set_required();		
 			$f->add_radiogroup("Pegi","Pegi","Pegi",array("0"=>"Tout public","10"=>"10","12"=>"12","16"=>"16","18"=>"18"))->set_value("tp")->set_required();
 			$f->add_select("Saison","Saison","Saison",array("NULL"=>"Aucune","1"=>"1","2"=>"2","3"=>"3"));
@@ -110,12 +111,10 @@ class Programmes extends Module{
 			$f->add_select("Genre","Genre","Genre",$data_select)->set_value("Action")->set_required();	
 			$f->add_select("Type","Type","Type",$data2_select)->set_value("Film")->set_required();	
 
-		// $f->login->set_validation("max-length:20");
-		// $f->Nom->set_validation("max-length:50");
-		// $f->Prenom->set_validation("max-length:20");
-		// $f->pass1->set_validation("required");
-		// $f->pass2->set_validation("equals-field:pass1");		
-		// $f->mail->set_validation("mail");		
+		$f->NomDuProgramme->set_validation("max-length:50");
+		$f->NomDuProgramme->set_validation("required");		
+		$f->Description->set_validation("max-length:500");
+		$f->pass1->set_validation("required");		
 
 
 		$f->add_submit("Valider","bntval")->set_value('Valider');		
@@ -129,27 +128,56 @@ class Programmes extends Module{
 		
 		//stocke la structure du formulaire dans la session sous le nom "form"
 		//pour une éventuelle réutilisation
-		$this->session->form = $f;	
-		
-	//ProgrammeManager::Creer($p);
+		$this->session->formulaireAjoutProgramme= $f;	
 		
 	}
 	
 	public function action_ajout(){
 		
-		//recupère l'id et la référence 
-		$id = $this->req->id;
-		$ref= $this->req->ref;
+		//recupère les infos envoyés 
 		
-		//passe ces informations dans le template
+		$form=$this->session->formulaireAjoutProgramme;
+		$form->reset_errors();
+		$form->valid();
 		
-		$this->tpl->assign("id",$id);
-		$this->tpl->assign("reference",$ref);
+		//test de la taille du fichier
+		$fichier=$this->requete->file('ImageProgramme');
+		if( $fichier['size'] > 0 ){
+			$err = true
+		}
 		
-		//enregistrer l'image dans les dossier et la base
-		$fichier = $this->request->file('ImageProgramme');
-		$name = uniqid().$fichier['name'];
-		move_uploaded_file($fichier['tmp_name'],"images/ImageProgramme/$name");
+		if($err){	
+		
+			$this->site->ajouter_message('ERREUR : remplir correctement les champs',ALERTE);			
+
+		
+			//on pré-remplit avec les valeurs déjà saisies
+			$form->populate();		
+			//passe le formulaire dans le template sous le nom "form"
+			$this->tpl->assign("form",$form);
+		}
+		//tous les tests ont été validés
+		else{
+			//enregistrer l'image dans les dossier et la base
+			$fichier = $this->request->file('ImageProgramme');
+			$name = uniqid().$fichier['name'];
+			move_uploaded_file($fichier['tmp_name'],"images/ImageProgramme/$name");
+
+			//création d'une instance de Membre
+			$m=new Programme($this->requete->login,$this->requete->nom,$this->requete->pnom,
+						$this->requete->mail,
+						$this->requete->pass1
+						);
+
+			//enregistrement (insertion) dans la base
+			ProgrammeManager::creer($m);
+
+			//passe un message pour la page suivante
+			$this->site->ajouter_message('L\'utilisateur est enregistré');			
+
+			//redirige vers le module par défaut
+			$this->site->redirect('index');
+		}
 	}
 
 	public function action_detail(){
@@ -179,8 +207,6 @@ class Programmes extends Module{
 		
 		
 	}
-
-	
 	
 }	
 ?>

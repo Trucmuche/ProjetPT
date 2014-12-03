@@ -16,7 +16,7 @@ class ProgrammeManager{
 		public static function chercherParID($id){
 			$sql="SELECT * from Programme WHERE id=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute($id);
+			$res->execute(array($id));
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -85,7 +85,13 @@ class ProgrammeManager{
 			$programme->Id_Genre=$p[8];											
 			$programme->Id_Type=$p[9];											
 			return $programme;*/
-		}   		
+		}
+
+		public static function supprimerParID($id){
+			$sql="DELETE from Programme WHERE Id_Programme=?";
+			$res=DB::get_instance()->prepare($sql);
+			$res->execute(array($id));
+		}		
 
 		public static function desactiver(){
 			

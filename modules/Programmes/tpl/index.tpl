@@ -62,7 +62,7 @@ $(function() {
 
 					<!--supprimer-->
 					<a class='glyphicon glyphicon-remove' title='{$donnees.Nom_Porgramme}' 
-						href='?module=Programmes&action=supprimer&id={$donnees.id}&ref={$donnees.Nom_Programme}'></a>
+						href='?module=Programmes&action=supprimer&id={$donnees.Id_Programme}&ref={$donnees.Nom_Programme}'></a>
 					
 					<!--avis-->
 					<a class='glyphicon glyphicon-heart-empty' title='{$donnees.Nom_Porgramme}' 

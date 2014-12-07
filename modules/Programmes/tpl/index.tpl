@@ -105,8 +105,8 @@ $(function() {
 <!-- boite de dialogue inclusion-->
 <div class="modal fade" id="inclusionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-	    Veuillez patientez...
+    <div class="modal-content" position="center">
+		<img src="images/loading.gif" />
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 20:26:35
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-06 18:43:28
          compiled from "modules\Programmes\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9996547f2cb85627c2-18767493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '00136a3a59efdbe6bf9421411fe039e600b2c480' => 
     array (
       0 => 'modules\\Programmes\\tpl\\index.tpl',
-      1 => 1417634770,
+      1 => 1417887792,
       2 => 'file',
     ),
   ),
@@ -153,8 +153,8 @@ if (!$_smarty_tpl->tpl_vars['donnees']->_loop) {
 <!-- boite de dialogue inclusion-->
 <div class="modal fade" id="inclusionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-	    Veuillez patientez...
+    <div class="modal-content" position="center">
+		<img src="images/loading.gif" />
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><?php }} ?>

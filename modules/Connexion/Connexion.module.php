@@ -11,12 +11,21 @@ class Connexion extends Module{
 		//$this->session->ouvrir($user);
 		
 		//code de demo
-		$m=new Membre();
-		$m->login = $this->req->Login;
-		$this->session->user=$m;		
-		$this->tpl->assign('login',$m->login);
-		$this->site->ajouter_message("Vous êtes connecté en tant que ".$m->login);
-		$this->site->redirect("index");
+		$test = new internaute();
+		$test = InternauteManager::chercherParPseudo($this->req->Login);
+		if(md5($this->req->Pass) == $test->Mdp)
+		{
+			$m=new Internaute();
+			$m->pseudo = $this->req->Login;
+			$this->session->user=$m;		
+			$this->tpl->assign('login',$m->login);
+			$this->site->ajouter_message("Vous êtes connecté en tant que ".$m->login);
+			$this->site->redirect("index");
+		}
+		else
+			$this->site->ajouter_message("ERREUR : mot de passe incorrect, veuillez réessayer");
+		
+		
 	}
 
 	public function action_deconnect(){		

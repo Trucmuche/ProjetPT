@@ -48,7 +48,6 @@ class InternauteManager{
 			$Internaute->Mdp=$p[4];
 			$Internaute->Mail=$p[5];											
 			return $Internaute;									
-		
 	}
 	
 			//autres exemples de fonctions possibles

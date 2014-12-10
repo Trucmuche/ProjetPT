@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-06 18:43:24
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-10 17:26:12
          compiled from "templates\champs\checkbox.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:27940543cfaa2694aa3-53477125%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd09181f15d0ebb4640d56e681bacd353cc6366dc' => 
     array (
       0 => 'templates\\champs\\checkbox.tpl',
-      1 => 1417866761,
+      1 => 1418227033,
       2 => 'file',
     ),
   ),

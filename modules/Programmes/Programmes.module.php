@@ -8,9 +8,29 @@ class Programmes extends Module{
 		//création de variables PHP
 		//on récupère de la base de données des éléments
 		$data = ProgrammeManager::liste();
+		$donneeType = TypeManager::liste();
+		$donneeGenre = GenreManager::liste();
+		
+		$selectType = array();
+		foreach ($donneeType as $ligne=>$donnee)
+		{
+			$selectType[$donnee['Id_Type']] = $donnee['Nom_Type'];
+		}
+		
+		$selectGenre = array();
+		foreach ($donneeGenre as $ligne=>$donnee)
+		{
+			$selectGenre[$donnee['Id_Genre']] = $donnee['Nom_Genre'];
+		}
+		
+		$recherche=new Form("?module=Programmes&action=index","formulaireRecherche");
+			$recherche->add_select("Type","Type","Type",$selectType)->set_value("Film");
+			$recherche->add_select("Genre","Genre","Genre",$selectGenre)->set_value("Action");
+			$recherche->add_submit("Rechercher","bntval")->set_value('Rechercher');
 					
 		//passe les variables au template		
 		$this->tpl->assign('data',$data);
+		$this->tpl->assign('recherche',$recherche);
 
 	}
 	

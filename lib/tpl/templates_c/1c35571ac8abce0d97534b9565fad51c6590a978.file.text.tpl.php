@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-06 13:28:41
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-10 17:01:59
          compiled from "templates\champs\text.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4278543cfaa236c064-30545920%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1c35571ac8abce0d97534b9565fad51c6590a978' => 
     array (
       0 => 'templates\\champs\\text.tpl',
-      1 => 1417866761,
+      1 => 1418227033,
       2 => 'file',
     ),
   ),

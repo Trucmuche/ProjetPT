@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-06 18:43:28
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-10 17:40:07
          compiled from "modules\Programmes\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9996547f2cb85627c2-18767493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '00136a3a59efdbe6bf9421411fe039e600b2c480' => 
     array (
       0 => 'modules\\Programmes\\tpl\\index.tpl',
-      1 => 1417887792,
+      1 => 1418229602,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_547f2cb88a679',
   'variables' => 
   array (
+    'recherche' => 0,
     'data' => 0,
     'donnees' => 0,
   ),
@@ -50,6 +51,9 @@ $(function() {
 	
 });
 </script>
+
+<h2>Effectuer une recherche</h2>
+<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
 
 
 <h2>Liste des programmes</h2>

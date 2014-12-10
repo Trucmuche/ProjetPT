@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 15:05:36
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-10 17:05:55
          compiled from "modules\DownloadFile\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:5555547f18b0648955-23493513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '18a553953763594afae11820fbabda9ffec3f3bd' => 
     array (
       0 => 'modules\\DownloadFile\\tpl\\index.tpl',
-      1 => 1413158696,
+      1 => 1418227032,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.1',
   'unifunc' => 'content_547f18b07fa34',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_547f18b07fa34')) {function content_547f18b07fa34($_smarty_tpl) {?><p>
 Utilisation des headers php pour générer du contenu autre que HTML vers le navigateur

@@ -25,6 +25,8 @@ $(function() {
 });
 </script>
 {/literal}
+<h2>Effectuer une recherche</h2>
+{$recherche}
 
 <h2>Liste des programmes</h2>
 	<p class="text-right">

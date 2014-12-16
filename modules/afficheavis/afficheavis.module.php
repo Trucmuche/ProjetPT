@@ -3,11 +3,11 @@ class afficheavis extends Module{
 
 	public function action_index(){
 
-		$this->set_title("Liste");
+		$this->set_title("Voir les avis de ");
 
 		//création de variables PHP
 		//on récupère de la base de données des éléments
-		$data = ProgrammeManager::liste();
+		$data = JugerManager::chercherParProg($this->req->id);
 					
 		//passe les variables au template		
 		$this->tpl->assign('data',$data);

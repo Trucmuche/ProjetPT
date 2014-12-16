@@ -26,25 +26,21 @@ $(function() {
 </script>
 {/literal}
 
-<h2>Liste des programmes</h2>
-	<p class="text-right">
-		<a href='?module=GestionProgramme&action=ajouter&displayModuleInDialog=1' 
-		data-toggle="modal" 
-		data-target="#inclusionModal"
-		class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
-	</p>
+<h2>Liste des avis du programme</h2>
+
 <h3>Liste</h3>
 	<table class='table table-striped'>
 		<thead>
-			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Description</th><th>Actions</th>
+			<th>Pseudo</th><th>Note</th><th>Avis</th><th>Actions</th>
 		</thead>
 		<tbody>
+
 		{foreach $data as $ligne=>$donnees}
+
 			<tr class='table-striped'>
-				<td>{$donnees.Nom_Programme}</td>
-				<td>{$donnees.Duree}</td>
-				<td>{$donnees.Moyenne}</td>
-				<td>{$donnees.Description}</td>
+				<td>{$donnees.Id_Internaute}</td>
+				<td>{$donnees.Note}</td>
+				<td>{$donnees.Avis}</td>
 				<td>
 					<!--voir le détail-->
 					<a class='glyphicon glyphicon-search' 
@@ -54,15 +50,17 @@ $(function() {
 					</a> 				
 
 					<!--modifier-->
+					{if ($this->session->user->Id_Internaute == $donnees.Id_Internaute)}
 					<a class='glyphicon glyphicon-pencil' 
 						data-toggle="modal" 
 						data-target="#inclusionModal"
-						href='?module=GestionProgramme&action=modifier&id={$donnees.id}&ref={$donnees.Nom_Programme}&displayModuleInDialog=1'>
+						href='?module=afficheavis&action=modifier&id1={$donnees.Id_internaute}&id2={$donnees.Id_Programme}&displayModuleInDialog=1'>
 					</a>
 
 					<!--supprimer-->
-					<a class='glyphicon glyphicon-remove' title='{$donnees.Nom_Porgramme}' 
-						href='?module=GestionProgramme&action=supprimer&id={$donnees.id}&ref={$donnees.Nom_Programme}'></a>				
+					<a class='glyphicon glyphicon-remove' title='{$donnees.Nom_Programme}' 
+						href='?module=afficheavis&action=supprimer&id1={$donnees.Id_Internaute}&id2={$donnees.Id_Programme}'></a>
+					{/if}				
 				</td>
 			</tr>
 		{foreachelse}	

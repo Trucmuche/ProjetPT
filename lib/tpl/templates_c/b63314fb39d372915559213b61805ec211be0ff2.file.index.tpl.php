@@ -1,31 +1,31 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-16 21:49:09
-         compiled from "modules\Programmes\tpl\index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:9996547f2cb85627c2-18767493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-16 22:32:18
+         compiled from "modules\afficheavis\tpl\index.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:330654909b3825de40-20264659%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '00136a3a59efdbe6bf9421411fe039e600b2c480' => 
+    'b63314fb39d372915559213b61805ec211be0ff2' => 
     array (
-      0 => 'modules\\Programmes\\tpl\\index.tpl',
-      1 => 1418762592,
+      0 => 'modules\\afficheavis\\tpl\\index.tpl',
+      1 => 1418765531,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '9996547f2cb85627c2-18767493',
+  'nocache_hash' => '330654909b3825de40-20264659',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_547f2cb88a679',
+  'unifunc' => 'content_54909b38a1071',
   'variables' => 
   array (
-    'recherche' => 0,
     'data' => 0,
     'donnees' => 0,
+    'this' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_547f2cb88a679')) {function content_547f2cb88a679($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_54909b38a1071')) {function content_54909b38a1071($_smarty_tpl) {?>
 <script>
 //demande confirmation sur click d'un bouton supprimer
 $(function() {
@@ -52,23 +52,16 @@ $(function() {
 });
 </script>
 
-/<h2>Effectuer une recherche</h2>
-<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
 
+<h2>Liste des avis du programme</h2>
 
-<h2>Liste des programmes</h2>
-	<p class="text-right">
-		<a href='?module=Programmes&action=ajouter&displayModuleInDialog=1' 
-		data-toggle="modal" 
-		data-target="#inclusionModal"
-		class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
-	</p>
 <h3>Liste</h3>
 	<table class='table table-striped'>
 		<thead>
-			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Description</th><th>Actions</th>
+			<th>Pseudo</th><th>Note</th><th>Avis</th><th>Actions</th>
 		</thead>
 		<tbody>
+
 		<?php  $_smarty_tpl->tpl_vars['donnees'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['donnees']->_loop = false;
  $_smarty_tpl->tpl_vars['ligne'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['data']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -76,47 +69,41 @@ foreach ($_from as $_smarty_tpl->tpl_vars['donnees']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['donnees']->_loop = true;
  $_smarty_tpl->tpl_vars['ligne']->value = $_smarty_tpl->tpl_vars['donnees']->key;
 ?>
+
 			<tr class='table-striped'>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
+				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Internaute'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Duree'];?>
+				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Note'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Moyenne'];?>
-</td>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Description'];?>
+				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Avis'];?>
 </td>
 				<td>
 					<!--voir le détail-->
 					<a class='glyphicon glyphicon-search' 
 						data-toggle="modal" 
 						data-target="#inclusionModal" 
-						href='?module=Programmes&action=detail&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
+						href='?module=GestionProgramme&action=detail&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['id'];?>
 &ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 &displayModuleInDialog=1'>
 					</a> 				
 
 					<!--modifier-->
+					<?php if (($_smarty_tpl->tpl_vars['this']->value->session->user->Id_Internaute==$_smarty_tpl->tpl_vars['donnees']->value['Id_Internaute'])){?>
 					<a class='glyphicon glyphicon-pencil' 
 						data-toggle="modal" 
 						data-target="#inclusionModal"
-						href='?module=Programmes&action=modifier&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
-&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
+						href='?module=afficheavis&action=modifier&id1=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_internaute'];?>
+&id2=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
 &displayModuleInDialog=1'>
 					</a>
 
 					<!--supprimer-->
 					<a class='glyphicon glyphicon-remove' title='<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 ' 
-						href='?module=Programmes&action=supprimer&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
-&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
+						href='?module=afficheavis&action=supprimer&id1=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Internaute'];?>
+&id2=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
 '></a>
-					
-					<!--avis-->
-					<a class='glyphicon glyphicon-heart-empty' title='<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
-' 
-						href='?module=afficheavis&action=afficher&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
-&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
-'></a>
+					<?php }?>				
 				</td>
 			</tr>
 		<?php }
@@ -157,8 +144,8 @@ if (!$_smarty_tpl->tpl_vars['donnees']->_loop) {
 <!-- boite de dialogue inclusion-->
 <div class="modal fade" id="inclusionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" position="center">
-		<img src="images/loading.gif" />
+    <div class="modal-content">
+	    Veuillez patientez...
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><?php }} ?>

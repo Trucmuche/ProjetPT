@@ -32,15 +32,15 @@ class JugerManager{
 
 
 
-		public static function chercherParProg($nom){
-			$sql="SELECT * from Juger WHERE Nom_Programme=?";
+		public static function chercherParProg($id){
+			$sql="SELECT * from Juger WHERE Id_Programme=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute($nom);
+			$res->execute($id);
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
 			}
-			$p= $res->fetch();			
+			$p= $res->fetch();
 			$juger=new Juger();
 			$juger->Id_Internaute=$p[0];
 			$juger->Id_Programme=$p[1];

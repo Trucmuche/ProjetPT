@@ -173,3 +173,49 @@ ALTER TABLE `juger`
 ALTER TABLE `programme`
   ADD CONSTRAINT `Fk_Programme_Genre` FOREIGN KEY (`Id_Genre`) REFERENCES `genre` (`Id_Genre`),
   ADD CONSTRAINT `Fk_Programme_Type` FOREIGN KEY (`Id_Type`) REFERENCES `type` (`Id_Type`);
+
+--
+-- Contenu de la table `genre`
+--
+
+INSERT INTO `genre` (`Id_Genre`, `Nom_Genre`) VALUES
+(00001, 'Comedie'),
+(00002, 'Jeux'),
+(00003, 'Autobiographie'),
+(00004, 'Action'),
+(00005, 'Science Fiction'),
+(00006, 'Drame'),
+(00007, 'Tele Realite'),
+(00008, 'Policier'),
+(00009, 'Politique'),
+(00010, 'Historique'),
+(00011, 'Fantastique'),
+(00012, 'Catastrophe'),
+(00013, 'Horreur');
+
+
+--
+-- Contenu de la table `internaute`
+--
+
+INSERT INTO `internaute` (`Id_Internaute`, `Nom_Internaute`, `Prenom_Internaute`, `Pseudo`, `Mdp`, `Mail`, `admin`) VALUES
+(00000001, 'Rosette', 'Aymerica', 'Aymerica', 'b890b207381df06b12c82200068952e6', 'ayme@rica.fr', 1),
+(00000002, 'Leroy', 'Orane', 'Owrane', 'b890b207381df06b12c82200068952e6', 'ora@ne.fr', 1),
+(00000003, 'Chassain', 'Adrien', 'Adrien', 'b890b207381df06b12c82200068952e6', 'adr@ien.fr', 1),
+(00000004, 'Frbezar', 'Nicolas', 'Nicolabricot', 'b890b207381df06b12c82200068952e6', 'nico@las.fr', 1);
+-- mot de passe: iut
+--
+-- Contenu de la table `type`
+--
+
+INSERT INTO `type` (`Id_Type`, `Nom_Type`) VALUES
+(00001, 'Sport'),
+(00002, 'Film'),
+(00003, 'Documentaire'),
+(00004, 'Dessin Anime'),
+(00005, 'Film d''animation'),
+(00006, 'Divertissement'),
+(00007, 'Serie'),
+(00008, 'Spectacle'),
+(00009, 'Telefilm'),
+(00010, 'Information');

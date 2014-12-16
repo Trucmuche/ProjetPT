@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-03 21:07:27
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-16 14:17:08
          compiled from "modules\programmes\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:26200547f6d7fd94ee7-09091813%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '37974459326f993760a070f3cdd13852bb2a2f75' => 
     array (
       0 => 'modules\\programmes\\tpl\\index.tpl',
-      1 => 1417634770,
+      1 => 1418733905,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_547f6d805f13e',
   'variables' => 
   array (
+    'recherche' => 0,
     'data' => 0,
     'donnees' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_547f6d805f13e',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_547f6d805f13e')) {function content_547f6d805f13e($_smarty_tpl) {?>
 <script>
@@ -50,6 +51,9 @@ $(function() {
 	
 });
 </script>
+
+<h2>Effectuer une recherche</h2>
+<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
 
 
 <h2>Liste des programmes</h2>
@@ -153,8 +157,8 @@ if (!$_smarty_tpl->tpl_vars['donnees']->_loop) {
 <!-- boite de dialogue inclusion-->
 <div class="modal fade" id="inclusionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-	    Veuillez patientez...
+    <div class="modal-content" position="center">
+		<img src="images/loading.gif" />
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><?php }} ?>

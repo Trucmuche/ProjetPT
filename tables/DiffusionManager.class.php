@@ -14,9 +14,9 @@ class DiffusionManager{
 
 
 		public static function chercherParID($id){
-			$sql="SELECT * from Diffusion WHERE id=?";
+			$sql="SELECT * from Diffusion WHERE Id_Diffusion=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute($id);
+			$res->execute(array($id));
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -33,10 +33,10 @@ class DiffusionManager{
 
 
 
-		public static function chercherParProg($nom){
+		public static function chercherParProg($id){
 			$sql="SELECT * from Diffusion WHERE Id_Programme=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute($nom);
+			$res->execute(array($id));
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -54,7 +54,7 @@ class DiffusionManager{
 		public static function chercherParDeb($nom){
 			$sql="SELECT * from Diffusion WHERE Horaire_Deb=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute($nom);
+			$res->execute(array($nom));
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;

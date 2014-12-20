@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-16 21:49:09
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-20 16:37:57
          compiled from "modules\Programmes\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9996547f2cb85627c2-18767493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '00136a3a59efdbe6bf9421411fe039e600b2c480' => 
     array (
       0 => 'modules\\Programmes\\tpl\\index.tpl',
-      1 => 1418762592,
+      1 => 1419089864,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_547f2cb88a679',
   'variables' => 
   array (
-    'recherche' => 0,
     'data' => 0,
     'donnees' => 0,
   ),
@@ -52,10 +51,14 @@ $(function() {
 });
 </script>
 
-/<h2>Effectuer une recherche</h2>
-<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
 
-
+<p class="text-left">
+		<a href='?module=Programmes&action=search&displayModuleInDialog=1' 
+		data-toggle="modal" 
+		data-target="#inclusionModal"
+		class='btn btn-success glyphicon glyphicon-plus'> Rechercher un programme</a>
+</p>
+	
 <h2>Liste des programmes</h2>
 	<p class="text-right">
 		<a href='?module=Programmes&action=ajouter&displayModuleInDialog=1' 
@@ -76,6 +79,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['donnees']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['donnees']->_loop = true;
  $_smarty_tpl->tpl_vars['ligne']->value = $_smarty_tpl->tpl_vars['donnees']->key;
 ?>
+			<?php if ($_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme']!=null){?>
 			<tr class='table-striped'>
 				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 </td>
@@ -119,10 +123,9 @@ $_smarty_tpl->tpl_vars['donnees']->_loop = true;
 '></a>
 				</td>
 			</tr>
-		<?php }
-if (!$_smarty_tpl->tpl_vars['donnees']->_loop) {
-?>	
+			<?php }else{ ?>	
 			<tr><td colspan='3'>Aucune donnée</td></tr>
+			<?php }?>
 		<?php } ?>
 		</tbody>
 	</table>

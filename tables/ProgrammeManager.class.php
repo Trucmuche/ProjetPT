@@ -35,8 +35,6 @@ class ProgrammeManager{
 			return $programme;
 		}
 
-
-
 		public static function chercherParNom($nom){
 			$sql="SELECT * from Programme WHERE Nom_Programme=?";
 			$res=DB::get_instance()->prepare($sql);

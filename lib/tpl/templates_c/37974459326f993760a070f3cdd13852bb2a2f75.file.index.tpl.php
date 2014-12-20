@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2014-12-16 14:17:08
+<?php /* Smarty version Smarty-3.1.1, created on 2014-12-20 18:05:19
          compiled from "modules\programmes\tpl\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:26200547f6d7fd94ee7-09091813%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '37974459326f993760a070f3cdd13852bb2a2f75' => 
     array (
       0 => 'modules\\programmes\\tpl\\index.tpl',
-      1 => 1418733905,
+      1 => 1419095115,
       2 => 'file',
     ),
   ),
@@ -19,9 +19,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_547f6d805f13e',
   'variables' => 
   array (
-    'recherche' => 0,
     'data' => 0,
     'donnees' => 0,
+    'd' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -52,10 +52,14 @@ $(function() {
 });
 </script>
 
-<h2>Effectuer une recherche</h2>
-<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
 
-
+<p class="text-left">
+		<a href='?module=Programmes&action=search&displayModuleInDialog=1' 
+		data-toggle="modal" 
+		data-target="#inclusionModal"
+		class='btn btn-success glyphicon glyphicon-plus'> Rechercher un programme</a>
+</p>
+	
 <h2>Liste des programmes</h2>
 	<p class="text-right">
 		<a href='?module=Programmes&action=ajouter&displayModuleInDialog=1' 
@@ -63,7 +67,6 @@ $(function() {
 		data-target="#inclusionModal"
 		class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
 	</p>
-<h3>Liste</h3>
 	<table class='table table-striped'>
 		<thead>
 			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Description</th><th>Actions</th>
@@ -76,13 +79,22 @@ foreach ($_from as $_smarty_tpl->tpl_vars['donnees']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['donnees']->_loop = true;
  $_smarty_tpl->tpl_vars['ligne']->value = $_smarty_tpl->tpl_vars['donnees']->key;
 ?>
+			<?php if ($_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme']!=null){?>
 			<tr class='table-striped'>
 				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Duree'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Moyenne'];?>
-</td>
+				<td><?php  $_smarty_tpl->tpl_vars['d'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['d']->_loop = false;
+ $_smarty_tpl->tpl_vars['l'] = new Smarty_Variable;
+ $_from = JugerManager::moyenneProg($_smarty_tpl->tpl_vars['donnees']->value['Id_Programme']); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['d']->key => $_smarty_tpl->tpl_vars['d']->value){
+$_smarty_tpl->tpl_vars['d']->_loop = true;
+ $_smarty_tpl->tpl_vars['l']->value = $_smarty_tpl->tpl_vars['d']->key;
+?>
+				<?php echo $_smarty_tpl->tpl_vars['d']->value['Note'];?>
+
+				<?php } ?></td>
 				<td><?php echo $_smarty_tpl->tpl_vars['donnees']->value['Description'];?>
 </td>
 				<td>
@@ -117,12 +129,17 @@ $_smarty_tpl->tpl_vars['donnees']->_loop = true;
 						href='?module=afficheavis&action=afficher&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
 &ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
 '></a>
+					<!--Noter le programme-->
+					<a class='glyphicon glyphicon-plus' title='<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
+' 
+						href='?module=afficheavis&action=afficher&id=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Id_Programme'];?>
+&ref=<?php echo $_smarty_tpl->tpl_vars['donnees']->value['Nom_Programme'];?>
+'></a>
 				</td>
 			</tr>
-		<?php }
-if (!$_smarty_tpl->tpl_vars['donnees']->_loop) {
-?>	
+			<?php }else{ ?>	
 			<tr><td colspan='3'>Aucune donnée</td></tr>
+			<?php }?>
 		<?php } ?>
 		</tbody>
 	</table>

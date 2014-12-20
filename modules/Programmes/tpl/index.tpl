@@ -25,9 +25,14 @@ $(function() {
 });
 </script>
 {/literal}
-/<h2>Effectuer une recherche</h2>
-{$recherche}
 
+<p class="text-left">
+		<a href='?module=Programmes&action=search&displayModuleInDialog=1' 
+		data-toggle="modal" 
+		data-target="#inclusionModal"
+		class='btn btn-success glyphicon glyphicon-plus'> Rechercher un programme</a>
+</p>
+	
 <h2>Liste des programmes</h2>
 	<p class="text-right">
 		<a href='?module=Programmes&action=ajouter&displayModuleInDialog=1' 
@@ -35,17 +40,19 @@ $(function() {
 		data-target="#inclusionModal"
 		class='btn btn-success glyphicon glyphicon-plus'> Ajouter</a>
 	</p>
-<h3>Liste</h3>
 	<table class='table table-striped'>
 		<thead>
 			<th>Nom du Programme</th><th>Durée</th><th>Moyenne attribué</th><th>Description</th><th>Actions</th>
 		</thead>
 		<tbody>
 		{foreach $data as $ligne=>$donnees}
+			{if $donnees.Nom_Programme != NULL}
 			<tr class='table-striped'>
 				<td>{$donnees.Nom_Programme}</td>
 				<td>{$donnees.Duree}</td>
-				<td>{$donnees.Moyenne}</td>
+				<td>{foreach JugerManager::moyenneProg($donnees.Id_Programme) as $l=>$d}
+				{$d.Note}
+				{/foreach}</td>
 				<td>{$donnees.Description}</td>
 				<td>
 					<!--voir le détail-->
@@ -69,10 +76,14 @@ $(function() {
 					<!--avis-->
 					<a class='glyphicon glyphicon-heart-empty' title='{$donnees.Nom_Programme}' 
 						href='?module=afficheavis&action=afficher&id={$donnees.Id_Programme}&ref={$donnees.Nom_Programme}'></a>
+					<!--Noter le programme-->
+					<a class='glyphicon glyphicon-plus' title='{$donnees.Nom_Programme}' 
+						href='?module=afficheavis&action=afficher&id={$donnees.Id_Programme}&ref={$donnees.Nom_Programme}'></a>
 				</td>
 			</tr>
-		{foreachelse}	
+			{else}	
 			<tr><td colspan='3'>Aucune donnée</td></tr>
+			{/if}
 		{/foreach}
 		</tbody>
 	</table>

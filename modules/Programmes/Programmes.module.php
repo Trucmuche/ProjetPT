@@ -6,8 +6,13 @@ class Programmes extends Module{
 		$this->set_title("Liste");
 
 		//création de variables PHP
-		//on récupère de la base de données des éléments
 		$data = ProgrammeManager::liste();
+		//passe les variables au template		
+		$this->tpl->assign('data',$data);
+	}
+	
+	public function action_search(){
+		//on récupère de la base de données des éléments
 		$donneeType = TypeManager::liste();
 		$donneeGenre = GenreManager::liste();
 		
@@ -28,12 +33,9 @@ class Programmes extends Module{
 			$recherche->add_select("Genre","Genre","Genre",$selectGenre)->set_value("Action");
 			$recherche->add_submit("Rechercher","bntval")->set_value('Rechercher');
 					
-		//passe les variables au template		
-		$this->tpl->assign('data',$data);
+		
 		$this->tpl->assign('recherche',$recherche);
-
 	}
-	
 	public function action_modifier(){
 		$this->set_title("Modifier");
 		

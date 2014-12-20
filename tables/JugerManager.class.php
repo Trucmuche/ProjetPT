@@ -14,9 +14,9 @@ class JugerManager{
 
 
 		public static function chercherParInternaute($id){
-			$sql="SELECT * from Juger WHERE id=?";
+			$sql="SELECT * from Juger WHERE Id_Internaute=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute($id);
+			$res->execute(array($id));
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -30,12 +30,10 @@ class JugerManager{
 			return $juger;
 		}
 
-
-
 		public static function chercherParProg($id){
 			$sql="SELECT * from Juger WHERE Id_Programme=?";
 			$res=DB::get_instance()->prepare($sql);
-			$res->execute($id);
+			$res->execute(array($id));
 			//gérer les erreurs éventuelles
 			if($res->rowCount()==0){
 				return false;
@@ -46,6 +44,20 @@ class JugerManager{
 			$juger->Id_Programme=$p[1];
 			$juger->Note=$p[2];
 			$juger->Avis=$p[3];									
+			return $juger;											
+		}
+		
+		public static function moyenneProg($id){
+			$sql="SELECT AVG(note) from Juger WHERE Id_Programme=?";
+			$res=DB::get_instance()->prepare($sql);
+			$res->execute(array($id));
+			//gérer les erreurs éventuelles
+			if($res->rowCount()==0){
+				return false;
+			}
+			$p= $res->fetch();
+			$juger=new Juger();
+			$juger->Note=$p[0];								
 			return $juger;											
 		}
 		

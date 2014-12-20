@@ -87,7 +87,7 @@ class afficheavis extends Module{
 	}
 
 	public function action_afficher(){
-		$this->set_title("Commentaires:");
+		$this->set_title("Les avis");
 
 		$id = $this->req->id;
 		$ref= $this->req->ref;
